@@ -114,6 +114,9 @@
       2. 基础组件库读取
       3. <a taget="_balck" href="./re-prompt.html">需求功能描述 => 生成prompt</a>  
       4. 代码微调，优化, 审查
+  
+  <img src="./img/co.jpg" width="100%"/>
+
 
 
 ## 四. 为什么Ai生成JavaScript前端代码比java或者其他脚本语言更具有挑战尼？
