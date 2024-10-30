@@ -1,9 +1,9 @@
 <!DOCTYPE html><html><head>
-      <title>re-doc</title>
+      <title>re-doc-all</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="./katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\Administrator\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -29,23 +29,106 @@
 <p><strong>简述：通过Ai辅助编程工具的优劣势分析，优化现阶段前端页面开发工作流，探索开发与Ai的深度结合</strong></p>
 </blockquote>
 <blockquote>
-<p><strong>案例Demo： 使用cursor(claude 3.5 sonnet模型)集成的vsCode</strong></p>
+<p><a href="#%E7%9B%AE%E5%BD%95">目录</a><br>
+<a href="#%E4%B8%80-ai%E8%BE%85%E5%8A%A9%E7%BC%96%E7%A8%8B%E7%9A%84%E7%8E%B0%E7%8A%B6">一. AI辅助编程的现状</a></p>
+<blockquote>
+<p><a href="#1--ide%E6%A8%A1%E5%BC%8F%E4%BE%8B%E5%A6%82cursorgithub-copilot">1.  IDE模式：例如<code>Cursor</code>，<code>GitHub Copilot</code></a></p>
+<p><a href="#2--prompt%E6%A8%A1%E5%BC%8F%E4%BE%8B%E5%A6%82chatgpt">2.  Prompt模式：例如<code>ChatGPT</code></a></p>
+<p><a href="#3--agent%E6%A8%A1%E5%BC%8F%E4%BE%8B%E5%A6%82cline%E6%99%BA%E8%83%BD%E8%B0%83%E8%AF%95%E4%B8%8E%E9%94%99%E8%AF%AF%E4%BF%AE%E5%A4%8D%E6%A8%A1%E5%BC%8F-%E5%92%8C-%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E6%A8%A1%E5%BC%8F">3.  Agent模式：例如Cline（智能调试与错误修复模式 和 自动化代码生成模式）</a></p>
 </blockquote>
 <blockquote>
-<p><a href="#%E7%9B%AE%E5%BD%95">目录</a></p>
-<p><a href="#%E4%B8%80-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%B0%E9%98%B6%E6%AE%B5%E5%AF%B9ai%E5%B7%A5%E5%85%B7%E7%9A%84%E5%BA%94%E7%94%A8">一. 前端开发现阶段对AI工具的应用</a></p>
+<p><a href="#4-%E6%80%BB%E7%BB%93">4. 总结</a></p>
+</blockquote>
+<p><a href="#%E4%BA%8C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%B0%E9%98%B6%E6%AE%B5%E5%AF%B9ai%E5%B7%A5%E5%85%B7%E7%9A%84%E5%BA%94%E7%94%A8">二. 前端开发现阶段对AI工具的应用</a></p>
 <blockquote>
 <p><a href="#1-%E7%8E%B0%E9%98%B6%E6%AE%B5%E7%9A%84%E5%89%8D%E7%AB%AFspa%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B">1. 现阶段的前端SPA项目的开发流程：</a></p>
 <p><a href="#2-%E6%88%91%E4%BB%AC%E7%8E%B0%E5%9C%A8%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E7%9A%84ai%E8%BE%85%E5%8A%A9%E6%96%B9%E5%BC%8F">2. 我们现在正在使用的AI辅助方式：</a></p>
 <p><a href="#3-%E7%8E%B0%E6%9C%89%E7%9A%84%E5%BC%80%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98-%E4%B8%8E--ai%E7%9A%84%E4%BC%98%E5%8A%A3%E5%8A%BF">3. 现有的开发的问题 与  AI的优劣势</a></p>
 </blockquote>
-<p><a href="#%E4%BA%8C-%E7%BB%93%E5%90%88ai%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%B1%80%E9%99%90%E6%80%A7%E4%BC%98%E5%8C%96%E7%8E%B0%E6%9C%89%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8Eai%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88">二. 结合Ai的优势和局限性，优化现有开发工作流，与Ai深度融合</a></p>
+<p><a href="#%E4%B8%89-%E7%BB%93%E5%90%88ai%E7%9A%84%E4%BC%98%E5%8A%BF%E5%92%8C%E5%B1%80%E9%99%90%E6%80%A7%E4%BC%98%E5%8C%96%E7%8E%B0%E6%9C%89%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8Eai%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88">三. 结合Ai的优势和局限性，优化现有开发工作流，与Ai深度融合</a></p>
 <blockquote>
 <p><a href="#1-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%A8%A1%E5%9D%97%E6%B7%B1%E5%BA%A6%E6%8B%86%E5%88%86">1. 工作流程模块深度拆分：</a></p>
 <p><a href="#2-%E5%85%83%E7%BB%84%E4%BB%B6%E6%A8%A1%E5%9D%97%E5%A4%A7%E9%83%A8%E5%88%86%E6%98%AF%E5%B7%B2%E6%9C%89%E7%BB%84%E4%BB%B6%E5%BA%93%E7%9A%84%E6%89%80%E4%BB%A5%E5%BC%80%E5%8F%91%E7%9A%84%E9%87%8D%E7%82%B9%E9%83%A8%E5%88%86%E5%B0%B1%E6%98%AF%E4%B8%9A%E5%8A%A1%E7%BB%84%E4%BB%B6%E6%A8%A1%E5%9D%97">2. 元组件模块大部分是已有组件库的，所以开发的重点部分就是：<code>业务组件模块</code></a></p>
 </blockquote>
+<p><a href="#%E5%9B%9B-%E4%B8%BA%E4%BB%80%E4%B9%88ai%E7%94%9F%E6%88%90javascript%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E6%AF%94java%E6%88%96%E8%80%85%E5%85%B6%E4%BB%96%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E6%9B%B4%E5%85%B7%E6%9C%89%E6%8C%91%E6%88%98%E5%91%A2">四. 为什么Ai生成JavaScript前端代码比java或者其他脚本语言更具有挑战呢？</a></p>
+<p><a href="#%E4%BA%94-%E5%B1%95%E6%9C%9B%E5%92%8C%E6%9C%AA%E6%9D%A5">五. 展望和未来</a></p>
 </blockquote>
-<h2 id="一-前端开发现阶段对ai工具的应用">一. 前端开发现阶段对AI工具的应用 </h2>
+<h2 id="一-ai辅助编程的现状">一. AI辅助编程的现状 </h2>
+<h5 id="1--ide模式例如cursorgithub-copilot">1.  IDE模式：例如<code>Cursor</code>，<code>GitHub Copilot</code> </h5>
+<ol>
+<li>描述：代码补全工具，只能分析上下文和用户输入，生成相关代码片段， 显著提高开发者编程效率。</li>
+<li>适合人群：高级开发者，团队协作</li>
+<li>优势和局限性(cursor为例)
+<ul>
+<li>优势
+<ol>
+<li>提高编码速度，减少重复输入。</li>
+<li>与 IDE 的紧密集成，开发者沉浸式的编码体验，使其在开发者日常工作流程中高效且无缝。</li>
+<li>支持基于项目上下文的代码生成和优化，特别适合快速开发和调整代码。</li>
+</ol>
+</li>
+<li>局限性
+<ol>
+<li>对于复杂的业务逻辑或特定的系统架构设计，生成的代码可能需要大量调整。</li>
+<li>生成的代码片段可能在性能或安全性上存在缺陷，需要开发者逐个审查。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="2--prompt模式例如chatgpt">2.  Prompt模式：例如<code>ChatGPT</code> </h5>
+<ol>
+<li>描述：根据自然语言生成代码块，然后开发者将其整合到项目中</li>
+<li>适合人群：初学者</li>
+<li>优势和局限性
+<ul>
+<li>优势:
+<ol>
+<li>能够支持多种编程语言，回答广泛的技术问题。</li>
+<li>支持复杂的自然语言查询，可以生成代码、调试建议和学习材料。</li>
+<li>整合了强大的知识库，适用于开发者、产品人员以及学生。</li>
+</ol>
+</li>
+<li>局限性:
+<ol>
+<li>生成的代码不总是完全准确，尤其是在非常具体或复杂的任务中。</li>
+<li>对于特定项目的上下文理解有限，可能需要手动调整生成的代码。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="3--agent模式例如cline智能调试与错误修复模式-和-自动化代码生成模式">3.  Agent模式：例如Cline（智能调试与错误修复模式 和 自动化代码生成模式） </h5>
+<ol>
+<li>描述：<code>Cline</code> 自动化代码助手，能够在编辑器中自动分析代码、生成、编辑文件，甚至执行命令。它具备一定的自动化能力，支持开发者通过自然语言描述需求来生成相对复杂代码并进行调试，注重开发环境的整合和深度分析。</li>
+<li>适合人群：开发团队和高级开发者</li>
+<li>优势和局限性
+<ul>
+<li>优势：
+<ol>
+<li>具备自动化代码生成、调试和错误修复功能，可以减少开发者的重复劳动。</li>
+<li>深度集成开发环境（IDE），能够自动执行命令、分析项目结构，并提供有效的修改建议。</li>
+<li>支持代码创建、编辑、终端操作以及捕获错误等操作。</li>
+</ol>
+</li>
+<li>局限性：
+<ol>
+<li>由于自动化程度较高，开发者需要对其生成的代码和执行的操作进行仔细审查，以确保安全性和代码质量。</li>
+<li>对于复杂的项目，整体需求的上下文可能变得模糊，导致生成的代码不符合预期</li>
+<li>执行失败：复杂的需求涉及多个业务逻辑和数据交互，从而导致执行失败或生成不完整的代码</li>
+<li>调试困难：如果最终代码或逻辑出错，查找和修复问题的过程可能会变得更加困难，因为需要在复杂的代码结构中进行排查。</li>
+<li>缺乏灵活性：AI 生成的代码往往是基于预设模板，处理复杂需求时可能缺乏灵活性，不能适应特定业务的变化。</li>
+<li>API使用成本大，输入每百万tokens是3美元，输出每百万tokens是15美元</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="4-总结">4. 总结 </h5>
+<blockquote>
+<p>IDE和Agent模式本质上都是Prompt模式的变种，但Agent模式更像是AI程序员的初级尝试，使开发者能够更专注于高层设计，将重复性任务交给AI处理，显著的提高开发效率。</p>
+</blockquote>
+<h2 id="二-前端开发现阶段对ai工具的应用">二. 前端开发现阶段对AI工具的应用 </h2>
 <h5 id="1-现阶段的前端spa项目的开发流程">1. 现阶段的前端SPA项目的开发流程： </h5>
 <img src="./img/1.jpg" width="100%">
 <h4 id="2-我们现在正在使用的ai辅助方式">2. 我们现在正在使用的AI辅助方式： </h4>
@@ -71,7 +154,7 @@
 <ol start="4">
 <li>那么能否对开发流程进行更细粒度的模块划分，使得Ai得到恰当的任务粒度，高效参与其中呢？</li>
 </ol>
-<h2 id="二-结合ai的优势和局限性优化现有开发工作流与ai深度融合">二. 结合Ai的优势和局限性，优化现有开发工作流，与Ai深度融合 </h2>
+<h2 id="三-结合ai的优势和局限性优化现有开发工作流与ai深度融合">三. 结合Ai的优势和局限性，优化现有开发工作流，与Ai深度融合 </h2>
 <img src="./img/3.jpg" width="100%">
 <h5 id="1-工作流程模块深度拆分">1. 工作流程模块深度拆分： </h5>
 <ul>
@@ -141,52 +224,48 @@
   <span class="token number">2</span>. 高度内聚，功能职责清晰，能独立运行，有自己内部状态。
   <span class="token number">3</span>. 符合一进一出的原则（value, change）数据流向清晰，及时响应父组件的传入数据，同时能对用户交互后的数据变更进行通知。
 </code></pre><ol start="3">
-<li>
-<p>尝试让AI专注接管业务组件的开发流程（demo举例子）：</p>
+<li>尝试让AI专注接管业务组件的开发流程（demo举例子）：
 <ol>
 <li><a taget="_balck" href="./re-role.html">设定角色</a></li>
 <li>基础组件库读取</li>
 <li><a taget="_balck" href="./re-prompt.html">需求功能描述 =&gt; 生成prompt</a></li>
 <li>代码微调，优化, 审查</li>
 </ol>
-<pre data-role="codeBlock" data-info="md" class="language-gfm md"><code>  ### 组件的prompt
-
-  - 请基于element2组件库，使用Vue2, 开发一个如图所示的组件
-  需求如下：
-
-  Prompt Description
-  1. 双列表传输组件的简洁UI，用于在两个列表之间选择和移动项目。布局包括：
-  2. 两个主列表（标记为“列表1”和“列表2”）并排显示。
-  3. 两个列表中每个项目旁边的复选框，允许多次选择。
-  4. 项目计数器在每个列表的右上方，指示当前的选择计数（例如，0/5,0/2）。
-  5. 每个列表中的搜索栏,允许用户通过输入来过滤项目。
-  6. 中间的传输按钮，具有左（&lt;）和右（&gt;）箭头，可以将选中的项目从一个列表移动到另一个列表。
-  7. 最下方有确定 和 取消按钮
-
-  Functionality
-  1. 选择：用户可以通过勾选复选框来选择每个列表中的项目。
-  2. 搜索：用户可以在搜索栏中输入过滤每个列表中的项目，从而更容易找到特定的条目。
-  3. 转移：用户可以点击转移按钮将选中的项目从一个列表移动到另一个列表。左箭头将项目移动到“列表1”，右箭头将项目移动到“列表2”。
-  4. 把左侧数据转移到右侧列表时，添加到右侧列表数组的末尾。
-  5. 拖拽排序：右侧列表每个数据都能进行上下拖拽排序。
-  6. 左侧列表中的数据被转移到右侧后，左侧列表中数据不会减少，转移的数据转为disable状态，用indeterminate=true 属性用以表示。
-  7. 右侧列表中的数据被转移到左侧后，左侧列表转移来的数据取消disable状态，indeterminate=false属性进行表示，可以进行正常的选中
-  8. 开发的组件能响应父组件的props传递的value的值，value的值是列表数据的一部分，如果value有值，那么分别在左右列表进行对应的展示。
-  9. 当用户点击确定之后，组件响应父组件的change事件，将右侧列表中的数据按顺序返回给父组件。
-  10. 点击全选则选中列表中可以选择所有数据，不改变列表中状态为disable的数据；
-
-  Applications and Context
-  1. 在两个列表之间为分类选择一个或者多个商品，右边列表能对所有已选的商品进行排序
-  2. 列表数据是包含多个{id:1, name: 'cet'}的数组。
-</code></pre></li>
-<li>
-<p>使用cursor(claude 3.5 soonet模型)生成<br>
-<img src="./img/co.jpg" width="100%"></p>
-</li>
-<li>
-<p>TODO附件:生成过程，测试，未调过程。</p>
 </li>
 </ol>
+  <img src="./img/co.jpg" width="100%">
+<h2 id="四-为什么ai生成javascript前端代码比java或者其他脚本语言更具有挑战呢">四. 为什么Ai生成JavaScript前端代码比java或者其他脚本语言更具有挑战呢？ </h2>
+<h5 id="1-前端框架和工具的频繁更新没有明确的规范">1. 前端框架和工具的频繁更新，没有明确的规范 </h5>
+<blockquote>
+<ul>
+<li>前端技术更新极快，新的框架、库、工具链层出不穷。比如从 jQuery 到 Vue、React、Svelte，甚至 CSS 的处理方式也在不断演进（如从 CSS 到 Sass、CSS-in-JS）。这种快速迭代让 AI 难以持续跟踪最新的最佳实践。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>后端技术栈的变化通常较慢，基础架构（如 Django、Spring、Node.js）较为稳定。AI 对后端或脚本语言的生成需求相对固定，不需要频繁更新。</li>
+</ul>
+</blockquote>
+<h5 id="2-用户界面和交互的复杂性">2. 用户界面和交互的复杂性 </h5>
+<blockquote>
+<ul>
+<li>前端代码不仅仅是逻辑实现，还包括界面布局、用户交互、响应式设计和动态效果，跨浏览器兼容性等。这种代码往往涉及更复杂的设计规则和主观因素。</li>
+</ul>
+</blockquote>
+<h5 id="3-跨平台和兼容性">3. 跨平台和兼容性 </h5>
+<blockquote>
+<ul>
+<li>前端代码需要适配多种浏览器和设备，并确保在不同屏幕尺寸上都能正常显示，这对代码的响应性、兼容性有较高要求。因为需要准确处理 CSS、JavaScript API 的跨浏览器差异。</li>
+</ul>
+</blockquote>
+<h5 id="4-前端生成代码的多样化和创新要求">4. 前端生成代码的多样化和创新要求 </h5>
+<blockquote>
+<ul>
+<li>前端的多样性让代码生成有更高的创新需求。比如相同的列表展示，可以用表格、卡片、网格等多种方式呈现，不同布局和样式会影响整体视觉效果和用户体验。AI 生成代码时难以确保“最佳实现”，因为有太多选择和主观标准。</li>
+</ul>
+</blockquote>
+<h2 id="五-展望和未来">五. 展望和未来 </h2>
+<p>Ai在前端领域应用潜力巨大，我们要去不断探索、学习、适应新的开发模式，全力拥抱Ai的同时，也要保持个性化和创新性。</p>
 
       </div>
       
